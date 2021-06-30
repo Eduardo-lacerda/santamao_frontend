@@ -11,6 +11,7 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { registerLocaleData, DatePipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { GoogleAnalyticsService } from './google-analytics.service';
 
 import * as $ from 'jquery';
 
@@ -31,6 +32,7 @@ defineLocale('pt', ptBrLocale);
   ],
   providers: [
     BsLocaleService,
+    GoogleAnalyticsService,
     { provide: LOCALE_ID, useValue: 'pt' },
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { TranslateService } from '@ngx-translate/core';
+import{Router, NavigationEnd} from '@angular/router';
 
+declare let gtag: Function;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,9 +15,19 @@ export class AppComponent implements OnInit {
 
   constructor(
     private bsLocaleService: BsLocaleService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    public router: Router,
   ) {
+    this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd){
 
+        gtag('config', 'G-DRMHK928NB',
+          {
+            'page_path': event.urlAfterRedirects
+          }
+        );
+      }
+    })
   }
 
   ngOnInit() {

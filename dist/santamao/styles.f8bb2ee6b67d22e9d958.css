@@ -1,4 +1,4 @@
-@charset "UTF-8";@font-face{font-family:Avenir;src:url(/assets/fonts/AvenirLTStd-Book.ttf) format("truetype")}@font-face{font-family:Avenir;src:url(/assets/fonts/AvenirLTStd-Roman.ttf) format("truetype");font-weight:700}@font-face{font-family:Avenir;src:url(AvenirLTStd-Black.e187ae0a92a840f42553.ttf) format("truetype");font-weight:900}*{font-family:Avenir;font-weight:400}
+@charset "UTF-8";@font-face{font-family:Avenir;src:url(/assets/fonts/AvenirLTStd-Book.ttf) format("truetype")}@font-face{font-family:Avenir;src:url(/assets/fonts/AvenirLTStd-Roman.ttf) format("truetype");font-weight:700}@font-face{font-family:Avenir;src:url(AvenirLTStd-Black.e187ae0a92a840f42553.ttf) format("truetype");font-weight:900}*{font-family:Avenir;font-weight:400}.hidden{display:none!important}html{background:#e8e8e8}@media screen and (max-width:380px){.row>*{padding-left:5px!important}.main-container{padding:11px!important}.choice-wrapper#apartamento{width:56%}#expressa-wrapper{width:47%}.choice-btn{font-size:15px!important}.choice-icon-wrapper svg{width:22px}}
 /*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

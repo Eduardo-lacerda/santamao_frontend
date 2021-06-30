@@ -1,6 +1,57 @@
 <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
 
-<div class="container-fluid main-container">
+
+<div class="container-fluid first-main-container" id="first-main-container">
+  <div class="escolha-container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="escolher-orcamento">Orçamento para minha:</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-4 relative-pos">
+        <button (click)="mostrarTela()" class="escolha-btn"></button>
+        <div (click)="mostrarTela()" class="escolha-content-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" width="38.518" height="38.522" viewBox="0 0 38.518 38.522">
+            <path id="home" d="M37.983,16.755l0,0L22.267,1.038a3.546,3.546,0,0,0-5.015,0L1.546,16.744l-.016.016A3.545,3.545,0,0,0,3.889,22.8c.036,0,.073.005.11.005h.626V34.371a4.155,4.155,0,0,0,4.151,4.15h6.148a1.129,1.129,0,0,0,1.129-1.129V28.327a1.9,1.9,0,0,1,1.894-1.894h3.626a1.9,1.9,0,0,1,1.894,1.894v9.066a1.129,1.129,0,0,0,1.129,1.129h6.148a4.155,4.155,0,0,0,4.151-4.15V22.807h.581a3.547,3.547,0,0,0,2.51-6.053Zm-1.6,3.417a1.281,1.281,0,0,1-.912.378H33.764a1.128,1.128,0,0,0-1.129,1.129V34.371a1.9,1.9,0,0,1-1.894,1.893H25.723V28.327a4.155,4.155,0,0,0-4.151-4.151H17.946a4.156,4.156,0,0,0-4.151,4.151v7.938H8.776a1.9,1.9,0,0,1-1.894-1.893V21.679A1.128,1.128,0,0,0,5.754,20.55H4.074l-.053,0a1.288,1.288,0,0,1-.888-2.2h0L18.848,2.634a1.289,1.289,0,0,1,1.823,0l15.71,15.71.007.007a1.292,1.292,0,0,1,0,1.821Zm0,0" transform="translate(-0.5 0.001)" fill="#fff"/>
+          </svg>
+          <span>Residência</span>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4 relative-pos">
+        <button (click)="enviarWhatsapp('empresa')" class="escolha-btn"></button>
+        <div (click)="enviarWhatsapp('empresa')" class="escolha-content-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="84.6666mm" height="84.6666mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+          viewBox="0 0 8467 8467"
+           xmlns:xlink="http://www.w3.org/1999/xlink">
+           <g id="Camada_x0020_1">
+            <g id="_1491326071520">
+             <path class="fil0" d="M2318 5281c0,-135 118,-295 246,-295l654 0c203,0 279,172 279,377l0 2111 -1179 0 0 -2193zm-425 16l0 2177 -704 0 0 -3290c215,0 461,-46 638,-147 256,-147 370,-339 426,-377 30,114 283,308 387,366 402,223 793,201 1190,0 129,-65 215,-148 310,-247 36,-37 52,-75 93,-102 45,30 97,108 176,184 362,349 934,423 1407,171 106,-57 367,-256 398,-372 41,28 57,65 94,103 278,291 540,421 970,421l0 3290 -3356 0 0 -2062c0,-587 -280,-868 -867,-868 -387,0 -650,-37 -915,182 -144,119 -247,311 -247,571zm4566 -2177l1523 0c-26,313 -369,625 -755,635 -88,3 -207,-29 -283,-55 -231,-80 -452,-326 -485,-580zm-5974 0l1522 0c-14,174 -147,343 -249,438 -263,246 -728,264 -1015,8 -114,-101 -234,-262 -258,-446zm1997 0l1522 0c-150,643 -864,802 -1264,446 -105,-93 -254,-262 -258,-446zm1980 0l1539 0c-78,164 -3,177 -266,438 -315,315 -989,269 -1229,-302 -20,-49 -24,-95 -44,-136zm-2848 -2128l5238 0c15,61 432,772 475,852 38,70 78,134 120,207 41,75 72,138 116,211l239 433 -7137 0 949 -1703zm-1571 1948c0,419 128,693 438,970 46,41 206,144 266,160l0 3044c0,354 -79,786 229,786l6531 0c64,0 129,-48 160,-85 50,-60 37,-108 37,-210l-1 -3519c298,-158 200,-119 375,-264 170,-140 346,-508 346,-734l0 -13c0,-253 -4,-169 -158,-451l-860 -1514c-131,-217 -251,-543 -423,-543l-5483 0c-195,0 -279,271 -429,520 -60,101 -114,199 -171,304 -93,170 -857,1460 -857,1549z"/>
+             <path class="fil0" d="M5952 6148l-1048 0c-126,0 -196,-69 -196,-196l0 -753c0,-118 31,-213 147,-213l1146 0c104,0 147,94 147,197l0 736c0,147 -50,229 -196,229zm-1670 -965c0,250 -27,822 43,1022l127 200c121,121 287,169 469,169l1015 0c398,0 638,-241 638,-638 0,-200 23,-854 -39,-1009 -40,-102 -66,-137 -137,-207 -139,-139 -292,-176 -511,-176l-917 0c-427,0 -688,215 -688,639z"/>
+            </g>
+           </g>
+          </svg>
+          <span>Empresa</span>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4 relative-pos">
+        <button (click)="enviarWhatsapp('obra')" class="escolha-btn"></button>
+        <div (click)="enviarWhatsapp('empresa')" class="escolha-content-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="84.6666mm" height="84.6666mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+          viewBox="0 0 8467 8467"
+           xmlns:xlink="http://www.w3.org/1999/xlink">
+           <g id="Camada_x0020_1">
+            <path class="fil0" d="M3011 5211c0,-58 20,-268 47,-294 37,-34 10,-10 54,-6l583 40c328,27 902,17 1239,-1 470,-24 481,-127 504,99 25,248 13,411 -92,656 -146,340 -477,614 -839,692 -214,45 -321,47 -533,2 -558,-115 -963,-635 -963,-1188zm996 -5149l373 0c420,21 835,110 1196,254 110,44 254,92 254,235 0,132 -53,242 -114,358 52,35 111,65 164,97 366,219 648,489 909,834 205,272 403,669 501,1015 30,107 79,292 88,401 111,0 266,-23 364,10 73,24 157,113 157,202l0 798c0,108 -100,181 -181,210 -88,31 -234,48 -307,83 0,332 -1,663 0,994 0,197 12,289 -124,365 -102,57 -323,26 -463,26 -62,266 -208,484 -228,570 179,268 526,314 126,713l-472 473c-157,157 -287,278 -484,84 -13,-13 -23,-24 -40,-41l-113 -115c-114,-116 -59,-37 -355,74 -94,35 -194,77 -291,100 0,174 69,603 -212,603l-1043 0c-103,0 -198,-106 -211,-197 -13,-99 -1,-297 -1,-406 -265,-62 -484,-208 -570,-228 -113,75 -257,309 -424,309 -152,0 -392,-286 -525,-419 -378,-378 -574,-475 -267,-780 3,-3 6,-6 8,-8 235,-242 159,-71 21,-441 -35,-93 -78,-194 -100,-291 -502,0 -587,53 -587,-407 0,-326 0,-652 0,-978 -131,-63 -489,-59 -489,-293l0 -798c0,-92 91,-185 170,-206 73,-19 264,-6 352,-6 9,-109 60,-308 91,-414 226,-758 643,-1291 1268,-1746 102,-75 203,-120 303,-187 -25,-47 -42,-98 -66,-146 -46,-95 -48,-98 -48,-212 0,-200 424,-303 629,-365 235,-71 486,-111 741,-124zm-1485 5051c0,456 62,719 313,1089 261,385 810,720 1301,720 456,0 718,-62 1088,-313 386,-261 720,-810 720,-1300l0 -196c0,-119 -30,-179 -32,-277 130,0 607,-90 759,-121 81,-16 168,-42 251,-42l0 782c-594,0 -445,-16 -629,512 -37,105 -76,189 -126,281 -63,118 -141,188 -141,315 0,179 184,260 260,375l-322 330c-150,-103 -176,-265 -411,-265 -73,0 -208,101 -272,136 -207,115 -366,159 -595,219 -263,68 -208,258 -208,558l-489 0c0,-613 17,-461 -511,-646 -106,-36 -190,-76 -282,-125 -118,-63 -188,-142 -315,-142 -170,0 -264,187 -375,261l-330 -322c103,-151 265,-176 265,-411 0,-72 -183,-330 -263,-552 -193,-538 -29,-524 -633,-524l0 -782c83,0 170,26 251,42 177,36 614,121 759,121 -2,98 -33,158 -33,277zm-1466 -1108l0 -260 6355 0c0,360 29,293 -156,332l-560 125c-252,50 -507,94 -776,136 -274,44 -534,70 -821,92 -278,21 -587,48 -865,48 -164,0 -269,-17 -440,-16 -479,3 -1542,-166 -2019,-263l-561 -122c-68,-17 -157,-10 -157,-72zm2167 -3291c258,-22 639,-268 1546,-112l475 112c-9,100 -515,1170 -580,1327 -86,206 -186,346 -186,514 0,133 119,212 277,212 151,0 207,-168 256,-282l333 -742c42,-104 135,-269 160,-377 746,394 1176,1060 1369,1890l-5279 0c52,-225 104,-435 195,-620 268,-543 632,-984 1173,-1270 23,99 418,943 494,1119 95,221 116,282 321,282 133,0 212,-119 212,-277 0,-53 -154,-373 -186,-449 -64,-154 -134,-284 -198,-438 -48,-116 -369,-792 -382,-889z"/>
+           </g>
+          </svg>
+          <span>Obra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid main-container hidden" id="main-container">
   <div class="left-container">
     <div class="row">
       <div class="col-12">
@@ -273,7 +324,7 @@
             </div>
             <div class="form-group col-12 col-md-6 mb-3">
               <label class="custom-label" for="email">E-mail <span class="obrigatorio"> *</span></label>
-              <input type="text" class="form-control form-control-sm" id="email"
+              <input type="text" class="form-control form-control-sm" id="email" (focusout)="enviarLead('email')"
                 autocomplete="off" formControlName="email" (input)="handleEmailInput()">
               <span class="error-msg" *ngIf="erroEmail && submetido">Insira um e-mail válido</span>
             </div>
@@ -300,8 +351,8 @@
         <label class="info-label">Preço total: </label>
         <span *ngIf="mostrarPreco" class="info-span" id="preco-total"> R$ {{precoFinal}}</span>
         <ng-container *ngIf="!mostrarPreco">
-          <span class="transparent">*</span><span tooltip="Preencha os campos telefone e e-mail para visualizars o preço" class="info-span esconder-preco">**********</span>
-          <span class="mensagem-esconder-preco">*Preencha os campos telefone e e-mail para visualizars o preço</span>
+          <span class="transparent">*</span><span tooltip="Preencha os campos telefone e e-mail para visualizar o preço" class="info-span esconder-preco">**********</span>
+          <span class="mensagem-esconder-preco">*Preencha os campos telefone e e-mail para visualizar o preço</span>
         </ng-container>
       </div>
       <div class="col-12">
@@ -342,32 +393,32 @@
           <div class="custom-cb-wrapper" *ngIf="mainForm.get('limpeza').value == 'Expressa'">
             <input type="checkbox" class="custom-check-box" id="extraBanheiro"
             autocomplete="off" formControlName="extraBanheiro" (click)="handleExtra($event)">
-            <span>Banheiro: Limpeza interna de armários - R$ 12,00</span>
+            <span>Banheiro: Limpeza interna de armários</span>
           </div>
           <div class="custom-cb-wrapper" *ngIf="mainForm.get('limpeza').value == 'Expressa'">
             <input type="checkbox" class="custom-check-box" id="extraQuarto"
             autocomplete="off" formControlName="extraQuarto" (click)="handleExtra($event)">
-            <span>Quarto: Limpeza de janelas e vidros - R$ 25,00</span>
+            <span>Quarto: Limpeza de janelas e vidros</span>
           </div>
           <div class="custom-cb-wrapper" *ngIf="mainForm.get('limpeza').value == 'Expressa'">
             <input type="checkbox" class="custom-check-box" id="extraCozinhaChao"
             autocomplete="off" formControlName="extraCozinhaChao" (click)="handleExtra($event)">
-            <span>Cozinha: Lavagem do chão (jogar água e esfregar) - R$ 10,00</span>
+            <span>Cozinha: Lavagem do chão (jogar água e esfregar)</span>
           </div>
           <div class="custom-cb-wrapper" *ngIf="mainForm.get('limpeza').value == 'Expressa'">
             <input type="checkbox" class="custom-check-box" id="extraCozinhaInterna"
             autocomplete="off" formControlName="extraCozinhaInterna" (click)="handleExtra($event)">
-            <span>Cozinha: Limpeza/higienização Interna: Fogão; Micro-ondas; Geladeira; Armários - R$ 30,00</span>
+            <span>Cozinha: Limpeza/higienização Interna: Fogão; Micro-ondas; Geladeira; Armários</span>
           </div>
           <div class="custom-cb-wrapper" *ngIf="mainForm.get('limpeza').value == 'Expressa'">
             <input type="checkbox" class="custom-check-box" id="extraCozinhaParedes"
             autocomplete="off" formControlName="extraCozinhaParedes" (click)="handleExtra($event)">
-            <span>Cozinha: Limpeza/higienização de paredes- R$ 12,00</span>
+            <span>Cozinha: Limpeza/higienização de paredes</span>
           </div>
           <div class="custom-cb-wrapper">
             <input type="checkbox" class="custom-check-box" id="extraChurrasqueira"
             autocomplete="off" formControlName="extraChurrasqueira" (click)="handleExtra($event)">
-            <span>Limpeza de churrasqueira - R$ 30,00</span>
+            <span>Limpeza de churrasqueira</span>
         </div>
         </form>
       </div>
@@ -450,7 +501,7 @@
                     Limpeza interna de armários.
                   </div>
                   <div class="column">
-                    <span class="extra">R$ 12,00</span>
+                    <span class="extra material-icons">price_check</span>
                   </div>
                   <div class="column">
                     <span class="material-icons incluso">check</span>
@@ -501,7 +552,7 @@
                     Limpeza de janelas e vidros;
                   </div>
                   <div class="column">
-                    <span class="extra">R$ 25,00</span>
+                    <span class="extra material-icons">price_check</span>
                   </div>
                   <div class="column">
                     <span class="material-icons incluso">check</span>
@@ -570,7 +621,7 @@
                     Lavagem do chão (jogar água e esfregar);
                   </div>
                   <div class="column">
-                    <span class="extra">R$ 10,00</span>
+                    <span class="extra material-icons">price_check</span>
                   </div>
                   <div class="column">
                     <span class="material-icons incluso">check</span>
@@ -589,10 +640,10 @@
                 </div>
                 <div class="table-row">
                   <div class="column">
-                    Limpeza/higienização Interna: Fogão; Micro-ondas; Geladeira; Armários; *
+                    Limpeza/higienização Interna: Fogão; Micro-ondas; Geladeira; Armários;
                   </div>
                   <div class="column">
-                    <span class="extra">R$ 30,00</span>
+                    <span class="extra material-icons">price_check</span>
                   </div>
                   <div class="column">
                     <span class="material-icons incluso">check</span>
@@ -603,7 +654,7 @@
                     Limpeza/higienização de paredes;
                   </div>
                   <div class="column">
-                    <span class="extra">R$ 12,00</span>
+                    <span class="extra material-icons">price_check</span>
                   </div>
                   <div class="column">
                     <span class="material-icons incluso">check</span>
@@ -635,13 +686,34 @@
                     <span class="material-icons nao-incluso">close</span>
                   </div>
                   <div class="column">
-                    <span class="extra">R$ 30,00</span>
+                    <span class="extra material-icons">price_check</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <hr>
+        <div class="nao-incluso-wrapper">
+          <h3>O que as profissionais da Santa Mão não fazem:</h3>
+          <div class="nao-incluso-topicos">
+            <ul>
+              <li>• Atividades com riscos à integridade física do Profissional: limpar o exterior de
+                janelas/lustres ou superfícies de difícil alcance, arrastar móveis pesados;
+              </li>
+              <li>
+                • Limpeza de dejetos de animais; (recolhimento);
+              </li>
+              <li>
+                • Lavagem de roupas;
+              </li>
+              <li>
+                • Ficar responsável por algum dos moradores.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr>
         <div class="col-12">
           <button class="agendar-btn" (click)="modalTemplate.hide()">Okay</button>
         </div>
@@ -666,6 +738,28 @@
         </div>
         <div class="col-12">
           <button class="agendar-btn" (click)="messageModal.hide()">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #errorMessageModal="bs-modal" class="modal fade error-modal" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Erro!</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="errorMessageModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          Houve um erro no servidor. Mas já estamos trabalhando para resolver!
+        </div>
+        <div class="col-12">
+          <button class="agendar-btn" (click)="errorMessageModal.hide()">Okay</button>
         </div>
       </div>
     </div>

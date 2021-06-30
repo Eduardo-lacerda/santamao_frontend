@@ -12,4 +12,8 @@ export class OrcamentoService {
   salvarOrcamento(body) {
     return this.http.post('/api/orcamento', body);
   }
+
+  salvarLead(body) {
+    return this.http.post('/api/lead', body);
+  }
 }

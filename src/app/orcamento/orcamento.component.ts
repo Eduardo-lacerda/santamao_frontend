@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@ang
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { DatePipe } from '@angular/common';
 import { OrcamentoService } from '../shared/services/orcamento.service';
-
+import { GoogleAnalyticsService } from '../google-analytics.service';
 
 @Component({
   selector: 'app-orcamento',
@@ -20,6 +20,7 @@ export class OrcamentoComponent implements OnInit {
   listaBairros: Array<any> = [];
   @ViewChild('modalTemplate') modalTemplate: ModalDirective;
   @ViewChild('messageModal') messageModal: ModalDirective;
+  @ViewChild('errorMessageModal') errorMessageModal: ModalDirective;
   config: any;
   precoFinal: number = 0;
   locale = 'pt';
@@ -36,12 +37,16 @@ export class OrcamentoComponent implements OnInit {
   erroNome: boolean = false;
   erroTelefone: boolean = false;
   erroEmail: boolean = false;
+  orcamentoResidencial: boolean = false;
+  telefone: any = '';
+  email: any = '';
 
   constructor(
       private formBuilder: FormBuilder,
       private modalService: BsModalService,
       private localeService: BsLocaleService,
-      private mainService: OrcamentoService
+      private mainService: OrcamentoService,
+      public googleAnalyticsService: GoogleAnalyticsService
     ) {
   }
 
@@ -132,6 +137,14 @@ export class OrcamentoComponent implements OnInit {
     this.modalTemplate.show();
   }
 
+  mostrarTela() {
+    $('#main-container').hide()
+    $('#main-container').removeClass('hidden');
+    $('#first-main-container').fadeOut( "slow", function() {
+      jQuery('#main-container').fadeIn("slow");
+    });
+  }
+
   mudarLimpeza(tipo: any) {
     this.mainForm.get('limpeza').setValue(tipo);
     if(tipo == 'Expressa') {
@@ -164,10 +177,18 @@ export class OrcamentoComponent implements OnInit {
     this.calcularPreco();
   }
 
+  handleNumberInput() {
+    var valor = this.mainForm.get('andares').value;
+  }
+
   diminuirNumero(campo: any) {
     var valorAtual = this.mainForm.get(campo).value;
-    if(valorAtual != 0)
+    if(valorAtual != 0) {
       this.mainForm.get(campo).setValue(valorAtual-1);
+    }
+/*     else if(campo == 'andares') {
+      this.mainForm.get(campo).setValue('Apenas Térreo');
+    } */
     this.calcularPreco();
   }
 
@@ -331,6 +352,8 @@ export class OrcamentoComponent implements OnInit {
 
     if(telefone.length >= 11) {
       this.telefoneInvalido = false;
+      this.telefone = telefone;
+      this.enviarLead('telefone');
       if(!this.emailInvalido)
         this.mostrarPreco = true;
     }
@@ -365,10 +388,10 @@ export class OrcamentoComponent implements OnInit {
     telefone = telefone.replace(' ', '');
 
     if(telefone.length >= 11) {
-      this.erroTelefone = true;
+      this.erroTelefone = false;
     }
     else
-      this.erroTelefone = false;
+      this.erroTelefone = true;
     if(this.mainForm.get('email').invalid) {
       this.erroEmail = true;
     }
@@ -386,7 +409,7 @@ export class OrcamentoComponent implements OnInit {
       this.erroNome = false;
 
     if(this.mainForm.valid) {
-      var wppApi = "https://api.whatsapp.com/send?phone=553591843377&text=";
+      var wppApi = "https://api.whatsapp.com/send?phone=5534984040360&text=";
       var pipe = new DatePipe('pt-BR');
       var data = pipe.transform(this.mainForm.get('data').value, 'dd/MM/yyyy');
       var horario = this.mainForm.get('horario').value
@@ -416,11 +439,54 @@ export class OrcamentoComponent implements OnInit {
 
       console.log(body);
       this.mainService.salvarOrcamento(body).subscribe(res => {
-        console.log(res);
+        if(res['error'] == false) {
+          this.googleAnalyticsService.eventEmitter("solicitar_agendamento", "agendamento", "solicitar", "solicitar_agendamento", 1);
+          this.messageModal.show();
+        }
+        else {
+          this.errorMessageModal.show();
+        }
       })
       var wppUrl = wppApi + encodeURI(wppMessage);
       window.open(wppUrl, "_blank");
-      this.messageModal.show();
     }
+  }
+
+  enviarLead(tipo) {
+    var nome = this.mainForm.get('nome').value;;
+    var body = {};
+    if(nome != undefined && nome != null && nome != '')
+      body['nome'] = nome;
+
+    if(tipo == 'email') {
+      var email = this.mainForm.get('email').value;
+      if(this.mainForm.get('email').valid) {
+        body['email'] = email;
+        console.log(body)
+        this.mainService.salvarLead(body).subscribe(res => {
+          console.log(res);
+        });
+      }
+    }
+    else if(tipo == 'telefone') {
+      body['telefone'] = this.telefone;
+      console.log(body)
+      this.mainService.salvarLead(body).subscribe(res => {
+        console.log(res);
+      });
+    }
+  }
+
+  enviarWhatsapp(tipo) {
+    var wppApi = "https://api.whatsapp.com/send?phone=5534984040360&text=";
+    var mensagem = '';
+    if(tipo == 'obra') {
+      mensagem = "Olá, eu gostaria de fazer um orçamento de limpeza para uma obra."
+    }
+    else if(tipo == 'empresa') {
+      mensagem = "Olá, eu gostaria de fazer um orçamento de limpeza para minha empresa"
+    }
+    var wppUrl = wppApi + encodeURI(mensagem);
+    window.open(wppUrl, "_blank");
   }
 }
