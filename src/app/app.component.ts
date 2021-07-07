@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { TranslateService } from '@ngx-translate/core';
 import{Router, NavigationEnd} from '@angular/router';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
+import {filter} from 'rxjs/operators';
 
 declare let gtag: Function;
 @Component({
@@ -17,11 +19,12 @@ export class AppComponent implements OnInit {
     private bsLocaleService: BsLocaleService,
     private translateService: TranslateService,
     public router: Router,
+    public ga: Angulartics2GoogleAnalytics
   ) {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd){
 
-        gtag('config', 'G-DRMHK928NB',
+        gtag('config', 'UA-200752880-1',
           {
             'page_path': event.urlAfterRedirects
           }
@@ -31,6 +34,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    //GOOGLE ANALYTICS
+    this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe((event: NavigationEnd) =>
+        this.ga.pageTrack(event.urlAfterRedirects));
+
     // Seta a linguagem geral da aplicação: do armazenamento local do usuário, do browser ou a padrão
     this.translateService.addLangs(['pt', 'en']);
     this.translateService.setDefaultLang(this.dfltLang);

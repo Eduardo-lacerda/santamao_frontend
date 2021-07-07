@@ -440,7 +440,7 @@ export class OrcamentoComponent implements OnInit {
       console.log(body);
       this.mainService.salvarOrcamento(body).subscribe(res => {
         if(res['error'] == false) {
-          this.googleAnalyticsService.eventEmitter("solicitar_agendamento", "agendamento", "solicitar", "solicitar_agendamento", 1);
+          this.googleAnalyticsService.eventEmitter("solicitar_agendamento", "agendamento", "solicitar_agendamento", "solicitar_agendamento", 1);
           this.messageModal.show();
         }
         else {
