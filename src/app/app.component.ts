@@ -21,16 +21,7 @@ export class AppComponent implements OnInit {
     public router: Router,
     public ga: Angulartics2GoogleAnalytics
   ) {
-    this.router.events.subscribe(event => {
-      if(event instanceof NavigationEnd){
 
-        gtag('config', 'UA-200752880-1',
-          {
-            'page_path': event.urlAfterRedirects
-          }
-        );
-      }
-    })
   }
 
   ngOnInit() {

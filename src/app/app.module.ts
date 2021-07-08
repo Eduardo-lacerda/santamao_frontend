@@ -12,7 +12,8 @@ import { registerLocaleData, DatePipe } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
 import { GoogleAnalyticsService } from './google-analytics.service';
-import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
+import {Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import * as $ from 'jquery';
 
@@ -30,7 +31,7 @@ defineLocale('pt', ptBrLocale);
     AppRoutingModule,
     BsDatepickerModule,
     TranslateModule.forRoot(),
-    Angulartics2GoogleAnalytics
+    Angulartics2Module.forRoot()
   ],
   providers: [
     BsLocaleService,
